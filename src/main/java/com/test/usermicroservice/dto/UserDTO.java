@@ -1,10 +1,16 @@
 package com.test.usermicroservice.dto;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@RequiredArgsConstructor
-@Data
+@AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
 public class UserDTO {
 
     private String name;
