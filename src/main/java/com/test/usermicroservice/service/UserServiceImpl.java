@@ -3,7 +3,6 @@ package com.test.usermicroservice.service;
 import com.test.usermicroservice.entity.User;
 import com.test.usermicroservice.exception.NonExistingUserException;
 import com.test.usermicroservice.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.NoSuchElementException;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public User getUser(int id)
