@@ -1,6 +1,5 @@
 package com.test.usermicroservice.exception;
 
-import lombok.Builder;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.web.context.request.WebRequest;
 

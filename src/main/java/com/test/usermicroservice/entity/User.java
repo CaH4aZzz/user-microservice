@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,6 +32,10 @@ public class User {
     @NotNull
     private String name;
 
+    @NonNull
+    @UniqueElements
+    private String username;
+
     @NotNull
     private int age;
 
@@ -38,4 +44,6 @@ public class User {
 
     @NotNull
     private String address;
+
+    private String info;
 }

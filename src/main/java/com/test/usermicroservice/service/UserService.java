@@ -9,4 +9,7 @@ public interface UserService {
     User getUser(int id);
 
     List<User> getAllUsers();
+
+    User getUserByUserName(String username);
+
 }
