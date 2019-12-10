@@ -46,46 +46,58 @@ class UserControllerTest {
         user_1 = User.builder()
                 .id(1)
                 .name("Sasha")
+                .username("username_1")
                 .age(22)
                 .gender("male")
                 .address("Tokyo")
+                .info("info_1")
                 .build();
 
         user_2 = User.builder()
                 .id(2)
                 .name("Max")
+                .username("username_2")
                 .age(33)
                 .gender("male")
                 .address("Kyiv")
+                .info("info_2")
                 .build();
 
         user_3 = User.builder()
                 .id(3)
                 .name("Olga")
+                .username("username_3")
                 .age(24)
                 .gender("female")
                 .address("London")
+                .info("info_3")
                 .build();
 
         userDTO_1 = UserDTO.builder()
                 .name("Sasha")
+                .username("username_4")
                 .age(22)
                 .gender("male")
                 .address("Tokyo")
+                .info("info_4")
                 .build();
 
         userDTO_2 = UserDTO.builder()
                 .name("Max")
+                .username("username_5")
                 .age(33)
                 .gender("male")
                 .address("Kyiv")
+                .info("info_5")
                 .build();
 
         userDTO_3 = UserDTO.builder()
                 .name("Olga")
+                .username("username_6")
                 .age(24)
                 .gender("female")
                 .address("London")
+                .info("info_6")
                 .build();
 
     }
@@ -126,5 +138,12 @@ class UserControllerTest {
         assertEquals(userDTO_1.getAge(), actualUserDTO.getAge());
         assertEquals(userDTO_1.getAddress(), actualUserDTO.getAddress());
         assertEquals(userDTO_1.getGender(), actualUserDTO.getGender());
+    }
+
+    @Test
+    void getUserByUsernameTest() {
+        String username = "username_1";
+        when(userService.getUserByUserName(username)).thenReturn(user_1);
+        assertEquals(userController.convertToDto(user_1), userController.getUserByUserName(username));
     }
 }

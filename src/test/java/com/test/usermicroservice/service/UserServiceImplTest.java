@@ -43,30 +43,32 @@ class UserServiceImplTest {
         user_1 = User.builder()
                 .id(1)
                 .name("Sasha")
+                .username("username_1")
                 .age(22)
                 .gender("male")
                 .address("Tokyo")
+                .info("info_1")
                 .build();
 
         user_2 = User.builder()
                 .id(2)
                 .name("Max")
+                .username("username_2")
                 .age(33)
                 .gender("male")
                 .address("Kyiv")
+                .info("info_2")
                 .build();
 
         user_3 = User.builder()
                 .id(3)
                 .name("Olga")
+                .username("username_3")
                 .age(24)
                 .gender("female")
                 .address("London")
+                .info("info_3")
                 .build();
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
@@ -79,7 +81,6 @@ class UserServiceImplTest {
     @Test
     void getUserTest_withException() {
         int id = 1;
-
         when(userRepository.findById(id)).thenThrow(new NonExistingUserException("Could not find user_1 with ID = " + id));
     }
 
@@ -110,5 +111,19 @@ class UserServiceImplTest {
 
         assertEquals(users.size(), userService.getAllUsers().size());
         assertEquals(users, userService.getAllUsers());
+    }
+
+    @Test
+    void getUserByUsernameTest() {
+        String userName = "username_1";
+        when(userRepository.getUserByUsername(userName)).thenReturn(Optional.of(user_1));
+        assertEquals(user_1, userService.getUserByUserName(userName));
+    }
+
+    @Test
+    void getUserByUsernameTest_withException() {
+        String userName = "username_1";
+
+        when(userRepository.getUserByUsername(userName)).thenThrow(new NonExistingUserException("Could not find user_1 with ID = " + userName));
     }
 }
