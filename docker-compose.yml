@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app-client:
+    image: users-client
+    build: ../user-microservices
+    ports:
+      - '3000:3000'
+  app-server:
+    image: users-server
+    build: .
+    ports:
+      - '8082:8123'
+
