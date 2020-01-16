@@ -16,5 +16,4 @@ public class UserMicroserviceApplication {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
-
 }
